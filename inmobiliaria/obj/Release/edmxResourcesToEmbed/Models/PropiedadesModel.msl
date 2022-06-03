@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PropiedadesModelStoreContainer" CdmEntityContainer="PropiedadesDbEntities">
+    <EntitySetMapping Name="casas">
+      <EntityTypeMapping TypeName="PropiedadesModel.casa">
+        <MappingFragment StoreEntitySet="casas">
+          <ScalarProperty Name="Idcasa" ColumnName="Idcasa" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="PropiedadesModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

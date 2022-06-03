@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PropiedadesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="casa">
+    <Key>
+      <PropertyRef Name="Idcasa" />
+    </Key>
+    <Property Name="Idcasa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="costo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="PropiedadesDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="casas" EntityType="Self.casa" />
+    <EntitySet Name="users" EntityType="PropiedadesModel.user" />
+  </EntityContainer>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

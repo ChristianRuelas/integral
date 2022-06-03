@@ -1,0 +1,19 @@
+﻿@model inmobiliaria.Models.user
+
+@{
+    ViewBag.Title = "loginview";
+}
+
+<h2>login</h2>
+
+<div class="mb-3">
+    <form method="post" action="~/Casa/login">
+        <div class="">
+            <input type="text" class="form-control" name="usuario1" placeholder="Usuario" value="admin"/>
+            <input type="password" class="form-control" name="pass1" placeholder="Contraseña" value="admin" />
+        </div>
+        <div>
+            <button type="submit"class="btn-group btn-primary">Entrar</button>
+        </div>
+    </form>
+</div>

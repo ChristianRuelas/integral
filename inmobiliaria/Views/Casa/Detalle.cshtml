@@ -1,0 +1,96 @@
+﻿@model inmobiliaria.Models.casa
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Casa</h4>
+    <hr />
+    <dl class="dl-horizontal text-capitalize">
+        <dt>
+            Id
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idcasa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costo)
+        </dt>
+
+        <dd>
+            $ @Html.DisplayFor(model => model.costo) MXN
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagen)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.imagen)" width="400" />
+            <script>
+
+      paypal.Buttons({
+
+        // Sets up the transaction when a payment button is clicked
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '@Html.DisplayFor(model => model.costo)' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+              }
+            }]
+          });
+        },
+
+        // Finalize the transaction after payer approval
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            // Successful capture! For dev/demo purposes:
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                var transaction = orderData.purchase_units[0].payments.captures[0];
+                alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+            // When ready to go live, remove the alert and show a success message within this page. For example:
+            // var element = document.getElementById('paypal-button-container');
+            // element.innerHTML = '';
+            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+            // Or go to another URL:  actions.redirect('thank_you.html');
+          });
+        }
+      }).render('#paypal-button-container');
+
+
+            </script>
+
+        </dd>
+        <dd>
+            <div id="paypal-button-container"></div>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{
+        if (Session["user"] != null)
+        {
+            @Html.ActionLink("Editar", "Modificar", new { id = Model.Idcasa });
+
+
+        }
+    }
+    |
+    @Html.ActionLink("Ver lista de articulos", "Index") |
+
+</p>
